@@ -1,50 +1,143 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f2f5;
-    color: #444;
-    line-height: 1.6;
+  min-height: 0;
+  height: calc(100vh - 60px);
+  font-family: Arial, sans-serif;
+  color: rgb(72, 70, 61);
+  background-color: rgb(194, 189, 166);
+  position: relative;
+  background-image: url(https://assets.codepen.io/3735/nier-bg.svg), linear-gradient(rgba(72, 70, 61, 0.025) 2px, transparent 2px), linear-gradient(90deg, rgba(72, 70, 61, 0.025) 2px, transparent 2px);
+  background-size: 125%, 125%, 6px 6px, 6px 6px;
+  background-position: center center;
+  background-repeat: no-repeat, repeat, repeat;
+  margin: 30px 0;
+  padding: 60px 0;
+}
+body:before, body:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  background: url(https://assets.codepen.io/3735/nier-border.svg) repeat-x;
+  background-size: contain;
+}
+body:after {
+  top: auto;
+  bottom: 0;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 30px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
+.button-layout {
+  display: flex;
+  flex-wrap: wrap;
+  opacity: 0;
 }
 
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+.button-column {
+  width: 300px;
+  max-width: 100%;
+  margin: 0 32px 64px;
 }
 
-th {
-    background-color: #007bff;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 0.03em;
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 64px;
+  text-shadow: 6px 6px 0px rgba(72, 70, 61, 0.25);
+}
+h2 span {
+  opacity: 0;
 }
 
-tr:nth-child(even) {
-    background-color: #f8f9fa;
+.button-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 42px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(90deg, transparent 12px, rgba(72, 70, 61, 0.25) 12px, transparent 16px), linear-gradient(90deg, rgba(72, 70, 61, 0.25) 6px, transparent 0px);
+}
+.button-group .button {
+  margin-bottom: 18px;
+  transform: translateX(-35px);
+  opacity: 0;
+}
+.button-group .button:last-child {
+  margin-bottom: 0;
 }
 
-tr:hover {
-    background-color: #e9ecef;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.button {
+  position: relative;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(90deg, rgba(72, 70, 61, 0.25) 0%, rgba(72, 70, 61, 0.25) 50%, rgb(72, 70, 61) 50%, rgb(72, 70, 61) 100%);
+  background-size: 200%;
+  color: rgb(72, 70, 61);
+  border: none;
+  border-top: transparent 3px solid;
+  border-bottom: transparent 3px solid;
+  padding: 8px 8px 7px;
+  line-height: 1;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.4s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+.button-label {
+  display: inline-block;
+}
+.button-label:before {
+  content: "";
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  background: rgb(72, 70, 61);
+  margin-right: 6px;
+  transition: background-color 0.3s ease-in-out;
+}
+.button:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -42px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 40px;
+  height: 20px;
+  background: url("https://assets.codepen.io/3735/nier-pointer.svg") no-repeat;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+.button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  border-top: transparent 2px solid;
+  border-bottom: transparent 2px solid;
+  transition: border-color 0.3s ease-in-out;
+}
+.button:hover, .button:active, .button:focus {
+  background-position: -100% 100%;
+  border-color: rgb(194, 189, 166);
+  color: rgb(194, 189, 166);
+  box-shadow: 4px 4px 6px 2px rgba(72, 70, 61, 0.15);
+  outline: 0;
+}
+.button:hover .button-label:before, .button:active .button-label:before, .button:focus .button-label:before {
+  background: rgb(194, 189, 166);
+}
+.button:hover:before, .button:active:before, .button:focus:before {
+  opacity: 1;
+}
+.button:hover:after, .button:active:after, .button:focus:after {
+  border-top-color: rgb(72, 70, 61);
+  border-bottom-color: rgb(72, 70, 61);
 }
 
-h1 {
-    text-align: center;
-    color: #007bff;
-    margin: 20px 0;
-    font-size: 24px;
-    font-weight: 700;
-}
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,175 @@
+$tan: rgba(194, 189, 166, 1);
+$brown: rgba(72, 70, 61, 1);
+$brown25: rgba(72, 70, 61, .25);
+$brown15: rgba(72, 70, 61, .15);
+$brown025: rgba(72, 70, 61, .025);
+$darkBrown: rgba(69, 67, 58, 1);
+
+body {
+  min-height: 0;
+  height: calc(100vh - 60px);
+  font-family: Arial, sans-serif;
+  color: $brown;
+  background-color: $tan;
+  position: relative;
+  background-image:    
+    url(https://assets.codepen.io/3735/nier-bg.svg),
+    linear-gradient($brown025 2px, transparent 2px),
+    linear-gradient(90deg, $brown025 2px, transparent 2px);
+  background-size: 125%, 125%, 6px 6px, 6px 6px;
+  background-position: center center;
+  background-repeat: no-repeat, repeat, repeat;
+  margin: 30px 0;
+  padding: 60px 0;
+  
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: url(https://assets.codepen.io/3735/nier-border.svg) repeat-x;
+    background-size: contain;
+  }
+  
+  &:after {
+    top: auto;
+    bottom: 0;
+  }
+}
+
+.button-layout {
+  display: flex;
+  flex-wrap: wrap;
+  opacity: 0;
+}
+
+.button-column {
+  width: 300px;
+  max-width: 100%;
+  margin: 0 32px 64px;
+}
+
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 64px;
+  text-shadow: 6px 6px 0px $brown25;
+  
+  span {
+    opacity: 0;
+  }
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 42px;
+  background-repeat: no-repeat;
+  background-image: 
+    linear-gradient(90deg, transparent 12px, $brown25 12px, transparent 16px),
+    linear-gradient(90deg, $brown25 6px, transparent 0px);
+  
+  .button {
+    margin-bottom: 18px;
+    transform: translateX(-35px);
+    opacity: 0;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.button {
+  position: relative;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(90deg, 
+    $brown25 0%, $brown25 50%,
+    $brown 50%, $brown 100%);
+  background-size: 200%;
+  color: $brown;
+  border: none;
+  border-top: transparent 3px solid;
+  border-bottom: transparent 3px solid;
+  padding: 8px 8px 7px;
+  line-height: 1;
+  cursor: pointer;
+  text-align: left;
+  transition: 
+    background .4s ease-in-out,
+    border-color .3s ease-in-out,
+    color .3s ease-in-out,
+    box-shadow .4s ease-in-out;
+  
+  &-label {
+    display: inline-block;  
+  }
+  
+  &-label:before {
+    content: '';
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background: $brown;
+    margin-right: 6px;
+    transition: background-color .3s ease-in-out;
+  }
+  
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -42px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 40px;
+    height: 20px;
+    background: url("https://assets.codepen.io/3735/nier-pointer.svg") no-repeat;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity .4s ease-in-out;
+  }
+  
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    border-top: transparent 2px solid;
+    border-bottom: transparent 2px solid;
+    transition: border-color .3s ease-in-out;
+  }
+  
+  &:hover,
+  &:active,
+  &:focus {
+    background-position: -100% 100%;
+    border-color: $tan;
+    color: $tan;
+    box-shadow: 4px 4px 6px 2px $brown15;
+    outline: 0;
+    
+     .button-label:before {
+      background: $tan;
+    }
+    
+    &:before {
+      opacity: 1;
+    }
+    
+    &:after {
+      border-top-color: $brown;
+      border-bottom-color: $brown;
+    }
+  }
+}

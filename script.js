@@ -12,32 +12,33 @@ function displayCharacterInfo(character) {
     console.log(character);  // Verifica que se reciba correctamente cada personaje
 
     characterDiv.innerHTML = `
-        <h2>${character.name} (${character.japaneseName})</h2>
-        <p><strong>Tipo:</strong> ${character.type}</p>
-        <p><strong>Ocupación:</strong> ${character.occupation}</p>
-        <p><strong>Estado:</strong> ${character.status}</p>
-        <p><strong>Raza:</strong> ${character.race}</p>
-        <p><strong>Género:</strong> ${character.gender}</p>
-        <p><strong>Edad:</strong> ${character.age}</p>
-        <p><strong>Nacimiento:</strong> ${character.born}</p>
-        <p><strong>Predecesores:</strong> ${character.predecessors.join(", ")}</p>
-        <p><strong>Sucesores:</strong> ${character.successors.join(", ")}</p>
-        <p><strong>Color de cabello:</strong> ${character.hairColor}</p>
-        <p><strong>Color de ojos:</strong> ${character.eyeColor}</p>
-        <p><strong>Altura:</strong> ${character.height}</p>
-        <p><strong>Peso:</strong> ${character.weight}</p>
-        <p><strong>Voces:</strong> ${character.voiceActors.english}, ${character.voiceActors.japanese}, ${character.voiceActors.portuguese}</p>
-        <h3>Galería</h3>
-        <div class="gallery">${galleryHtml}</div>
-        <h3>Descripción</h3>
-        <p>${character.description}</p>
-        <h3>Jugabilidad</h3>
-        <p>${character.gameplay}</p>
-        <h3>Apariencia</h3>
-        <p>${character.appearanceDetails}</p>
-        <h3>Personalidad</h3>
-        <p>${character.personality}</p>
-    `;
+    <h2>${character.name} (${character.japaneseName})</h2>
+    <p><strong>Tipo:</strong> ${character.type}</p>
+    <p><strong>Ocupación:</strong> ${character.occupation}</p>
+    <p><strong>Estado:</strong> ${character.status}</p>
+    <p><strong>Raza:</strong> ${character.race}</p>
+    <p><strong>Género:</strong> ${character.gender}</p>
+    <p><strong>Edad:</strong> ${character.age}</p>
+    <p><strong>Nacimiento:</strong> ${character.born}</p>
+    <p><strong>Predecesores:</strong> ${Array.isArray(character.predecessors) ? character.predecessors.join(", ") : "No tiene"}</p>
+    <p><strong>Sucesores:</strong> ${Array.isArray(character.successors) ? character.successors.join(", ") : "No tiene"}</p>
+    <p><strong>Color de cabello:</strong> ${character.hairColor}</p>
+    <p><strong>Color de ojos:</strong> ${character.eyeColor}</p>
+    <p><strong>Altura:</strong> ${character.height}</p>
+    <p><strong>Peso:</strong> ${character.weight}</p>
+    <p><strong>Voces:</strong> ${character.voiceActors.english}, ${character.voiceActors.japanese}, ${character.voiceActors.portuguese}</p>
+    <h3>Galería</h3>
+    <div class="gallery">${galleryHtml}</div>
+    <h3>Descripción</h3>
+    <p>${character.description}</p>
+    <h3>Jugabilidad</h3>
+    <p>${character.gameplay}</p>
+    <h3>Apariencia</h3>
+    <p>${character.appearanceDetails}</p>
+    <h3>Personalidad</h3>
+    <p>${character.personality}</p>
+`;
+
 
     container.appendChild(characterDiv);
 }
@@ -77,3 +78,5 @@ async function fetchPersonajes() {
 
 // Fetch and display personajes data on page load
 fetchPersonajes();
+
+
