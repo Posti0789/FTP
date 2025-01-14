@@ -141,3 +141,16 @@ h2 span {
 }
 
 /*# sourceMappingURL=styles.css.map */
+.modal {
+  display: none;
+  /* Otros estilos para el modal */
+}
+
+.modal.visible {
+  display: block;
+  /* Estilos para hacer visible el modal */
+}
+
+.hidden {
+  display: none;
+}
