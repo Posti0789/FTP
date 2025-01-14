@@ -1,0 +1,37 @@
+{
+    "2B": {
+        "name": "2B",
+        "japaneseName": "ヨルハ２号Ｂ型 (Yoruha 2-gō B-gata)",
+        "type": "Protagonista",
+        "occupation": "Unidad de soldados YoRHa",
+        "status": "Vivo",
+        "race": "Android (YoRHa)",
+        "gender": "Mujer",
+        "age": "2-3",
+        "born": "7 de enero de 11942",
+        "predecessors": ["YoRHa Type A No.2"],
+        "successors": ["YoRHa Type P No.2"],
+        "hairColor": "Blanco amarillento",
+        "eyeColor": "Azul grisáceo",
+        "height": "168 cm",
+        "weight": "148.8 kg",
+        "voiceActors": {
+            "english": "Kira Buckland",
+            "japanese": "Yui Ishikawa",
+            "portuguese": "Mayara Stefane"
+        },
+        "description": "YoRHa No.2 Type B, conocida como 2B, es un personaje central en el juego NieR:Automata.",
+        "gameplay": "2B es un personaje equilibrado de NieR:Automata.",
+        "appearanceDetails": "2B tiene un vestido negro con botas de cuero.",
+        "personality": "2B es un personaje complejo con una profundidad emocional.",
+        "gallery": [
+           
+"https://static.wikia.nocookie.net/nier/images/d/d5/YoRHa_Commander_Render.png/revision/latest/scale-to-width-down/1200?cb=20230305154345",
+"https://static.wikia.nocookie.net/nier/images/0/08/AkehaMechanical.png/revision/latest/scale-to-width-down/236?cb=20220115100026",
+"https://static.wikia.nocookie.net/nier/images/8/85/YoRHa_Commander.png/revision/latest?cb=20190219195750",
+"https://i.pinimg.com/564x/62/23/46/62234623401c5caf8dbd0f9897f98ed5.jpg",
+"https://i.redd.it/3pt205768nea1.jpg"
+        ]
+    }
+}
+
