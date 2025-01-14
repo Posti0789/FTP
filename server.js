@@ -1,8 +1,12 @@
 const express = require('express');
+const cors = require('cors');  // Importa el paquete cors
 const app = express();
 const fs = require('fs');
 const path = require('path');
 const port = 3000;
+
+// Habilitar CORS para todas las solicitudes
+app.use(cors());
 
 // Ruta para devolver los personajes desde el archivo JSON
 app.get("/personajes", (req, res) => {
