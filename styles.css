@@ -154,3 +154,127 @@ h2 span {
 .hidden {
   display: none;
 }
+/* Estilo principal para los detalles del personaje */
+main#character-details {
+  color: #fff;
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 15px;
+  animation: slideIn 1s ease-out;
+}
+
+main h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+main p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+main h3 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  text-align: center;
+  color: #ffcc00;
+}
+
+/* Estilo para las imágenes de la galería */
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo para los enlaces */
+a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Pie de página */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 0;
+  border-radius: 10px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateY(-50px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+  body {
+      padding: 0 10px;
+  }
+
+  header h1 {
+      font-size: 2rem;
+  }
+
+  main h2 {
+      font-size: 1.8rem;
+  }
+
+  main p {
+      font-size: 1rem;
+  }
+
+  .gallery img {
+      width: 250px;
+  }
+}
