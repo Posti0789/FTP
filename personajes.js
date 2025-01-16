@@ -42,13 +42,55 @@ function displayCharacterDetails(character) {
     `;
 }
 
-// Función para obtener los datos del personaje
-async function fetchCharacterDetails() {
-    const characterName = getQueryParam("id");
-    if (!characterName) {
-        console.error("No se encontró el parámetro 'id' en la URL.");
+// Función para buscar coincidencias en los personajes
+function searchCharacters(query, personajes) {
+    const lowerCaseQuery = query.toLowerCase();
+
+    return Object.values(personajes).filter(character => {
+        // Combina todos los valores del objeto del personaje en un único string
+        const combinedFields = Object.values(character).join(" ").toLowerCase();
+        return combinedFields.includes(lowerCaseQuery);
+    });
+}
+
+// Función para manejar la búsqueda
+// Función para manejar la búsqueda
+async function handleSearch() {
+    const searchInput = document.getElementById("search-input").value.trim();
+
+    // Si el campo de búsqueda está vacío, simplemente no hace nada
+    if (!searchInput) {
         return;
     }
+
+    try {
+        const response = await fetch("http://localhost:3000/personajes");
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const personajes = await response.json();
+        const results = searchCharacters(searchInput, personajes);
+
+        if (results.length > 0) {
+            // Renderiza el primer resultado o todos según prefieras
+            displayCharacterDetails(results[0]);
+        } else {
+            console.error("No se encontraron coincidencias para la búsqueda:", searchInput);
+        }
+    } catch (error) {
+        console.error("Error fetching character details:", error);
+    }
+}
+
+
+// Evento para la búsqueda en tiempo real
+document.getElementById("search-input").addEventListener("input", handleSearch);
+
+// Fetch and display character details on page load (opcional)
+async function fetchCharacterDetails() {
+    const characterName = getQueryParam("id");
+    if (!characterName) return;
 
     try {
         const response = await fetch("http://localhost:3000/personajes");
@@ -69,5 +111,4 @@ async function fetchCharacterDetails() {
     }
 }
 
-// Fetch and display character details on page load
 fetchCharacterDetails();
