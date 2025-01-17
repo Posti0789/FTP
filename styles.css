@@ -11,21 +11,31 @@ body {
   background-repeat: no-repeat, repeat, repeat;
   margin: 30px 0;
   padding: 60px 0;
+}/* Mantener los bordes decorativos */
+body:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: url(https://assets.codepen.io/3735/nier-border.svg) repeat-x;
+    background-size: contain;
+    z-index: 1;
 }
-body:before, body:after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 14px;
-  background: url(https://assets.codepen.io/3735/nier-border.svg) repeat-x;
-  background-size: contain;
-}
+
 body:after {
-  top: auto;
-  bottom: 0;
+    content: '';
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: url(https://assets.codepen.io/3735/nier-border.svg) repeat-x;
+    background-size: contain;
+    z-index: 1;
 }
 
 .button-layout {
@@ -341,37 +351,90 @@ footer a:hover {
   padding: 2px;
   border-radius: 3px;
 }
+/* Estilos generales */
+
 #comparator {
-  margin: 20px;
+  margin: 40px auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f9f9f9;
+  max-width: 800px;
+  border: 2px solid #444;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a); /* Fondo con efecto metálico */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
 #comparator h2 {
   text-align: center;
+  color: #c0c0c0;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px #000;
 }
 
-#comparator select {
-  margin: 10px;
-  padding: 5px;
-  font-size: 16px;
+#comparator select,
+#comparator button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background: #1e1e1e;
+  color: #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+#comparator select:hover,
+#comparator button:hover {
+  background: #3a3a3a;
+  color: #fff;
+  border-color: #888;
+  cursor: pointer;
 }
 
 #comparison-result table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background: #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-#comparison-result th, #comparison-result td {
-  border: 1px solid #ddd;
-  padding: 10px;
+#comparison-result th,
+#comparison-result td {
+  padding: 15px;
   text-align: center;
+  color: #e0e0e0;
+  border: 1px solid #444;
 }
 
 #comparison-result th {
-  background-color: #f2f2f2;
+  background: #333;
+  color: #c0c0c0;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 3px #000;
+}
+
+#comparison-result tr:nth-child(even) {
+  background: #252525;
+}
+
+#comparison-result tr:nth-child(odd) {
+  background: #1f1f1f;
+}
+
+#comparison-result td.difference {
+  background: #5c1a1a; /* Resalta diferencias */
+  color: #fff;
   font-weight: bold;
+  border: 1px solid #aa4444;
+}
+
+#comparison-result td.match {
+  background: #1a5c1a; /* Resalta coincidencias */
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid #44aa44;
 }
