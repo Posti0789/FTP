@@ -310,3 +310,34 @@ footer a:hover {
     width: 120px;
   }
 }
+/* Estilo de la barra de búsqueda */
+#search-bar {
+  position: fixed; /* Fija la barra en la parte superior */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  background-color: #282c34; /* Color de fondo */
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo del campo de búsqueda */
+#search-input {
+  width: 50%; /* Ajusta el ancho del campo de texto */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Estilo del texto resaltado */
+.highlight {
+  background-color: rgb(228, 10, 10);
+  font-weight: bold;
+  padding: 2px;
+  border-radius: 3px;
+}

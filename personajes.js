@@ -1,3 +1,25 @@
+// Función para resaltar coincidencias en la página actual
+function highlightSearch(query) {
+    const container = document.getElementById("character-details");
+    const elements = container.querySelectorAll("p, h2, h3"); // Elementos donde buscar coincidencias
+
+    elements.forEach(element => {
+        const originalText = element.textContent || element.innerText;
+        if (query) {
+            const regex = new RegExp(`(${query})`, "gi");
+            element.innerHTML = originalText.replace(regex, '<span class="highlight">$1</span>');
+        } else {
+            element.innerHTML = originalText; // Restaurar texto original si no hay búsqueda
+        }
+    });
+}
+
+// Evento para la búsqueda en tiempo real
+document.getElementById("search-input").addEventListener("input", function () {
+    const query = this.value.trim();
+    highlightSearch(query);
+});
+
 // Función para obtener el parámetro de la URL
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -42,52 +64,7 @@ function displayCharacterDetails(character) {
     `;
 }
 
-// Función para buscar coincidencias en los personajes
-function searchCharacters(query, personajes) {
-    const lowerCaseQuery = query.toLowerCase();
-
-    return Object.values(personajes).filter(character => {
-        // Combina todos los valores del objeto del personaje en un único string
-        const combinedFields = Object.values(character).join(" ").toLowerCase();
-        return combinedFields.includes(lowerCaseQuery);
-    });
-}
-
-// Función para manejar la búsqueda
-// Función para manejar la búsqueda
-async function handleSearch() {
-    const searchInput = document.getElementById("search-input").value.trim();
-
-    // Si el campo de búsqueda está vacío, simplemente no hace nada
-    if (!searchInput) {
-        return;
-    }
-
-    try {
-        const response = await fetch("http://localhost:3000/personajes");
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const personajes = await response.json();
-        const results = searchCharacters(searchInput, personajes);
-
-        if (results.length > 0) {
-            // Renderiza el primer resultado o todos según prefieras
-            displayCharacterDetails(results[0]);
-        } else {
-            console.error("No se encontraron coincidencias para la búsqueda:", searchInput);
-        }
-    } catch (error) {
-        console.error("Error fetching character details:", error);
-    }
-}
-
-
-// Evento para la búsqueda en tiempo real
-document.getElementById("search-input").addEventListener("input", handleSearch);
-
-// Fetch and display character details on page load (opcional)
+// Fetch and display character details on page load
 async function fetchCharacterDetails() {
     const characterName = getQueryParam("id");
     if (!characterName) return;
