@@ -64,6 +64,113 @@ function displayCharacterDetails(character) {
     `;
 }
 
+// Función para cargar los nombres de los personajes en los selectores
+async function loadCharacterOptions() {
+    try {
+        const response = await fetch("http://localhost:3000/personajes");
+        const personajes = await response.json();
+
+        const character1Select = document.getElementById("character1");
+        const character2Select = document.getElementById("character2");
+
+        Object.keys(personajes).forEach(key => {
+            const option1 = document.createElement("option");
+            const option2 = document.createElement("option");
+
+            option1.value = key;
+            option1.textContent = personajes[key].name;
+            option2.value = key;
+            option2.textContent = personajes[key].name;
+
+            character1Select.appendChild(option1);
+            character2Select.appendChild(option2);
+        });
+    } catch (error) {
+        console.error("Error loading character options:", error);
+    }
+}
+
+// Función para comparar personajes seleccionados
+async function compareCharacters() {
+    const char1Id = document.getElementById("character1").value;
+    const char2Id = document.getElementById("character2").value;
+
+    if (!char1Id || !char2Id) {
+        alert("Por favor, selecciona dos personajes para comparar.");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:3000/personajes");
+        const personajes = await response.json();
+
+        const char1 = personajes[char1Id];
+        const char2 = personajes[char2Id];
+
+        displayComparison(char1, char2);
+    } catch (error) {
+        console.error("Error comparing characters:", error);
+    }
+}
+
+// Función para mostrar la tabla de comparación
+function displayComparison(char1, char2) {
+    const comparisonResult = document.getElementById("comparison-result");
+    comparisonResult.innerHTML = `
+        <table>
+            <thead>
+                <tr>
+                    <th>Atributo</th>
+                    <th>${char1.name}</th>
+                    <th>${char2.name}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tipo</td>
+                    <td>${char1.type}</td>
+                    <td>${char2.type}</td>
+                </tr>
+                <tr>
+                    <td>Ocupación</td>
+                    <td>${char1.occupation}</td>
+                    <td>${char2.occupation}</td>
+                </tr>
+                <tr>
+                    <td>Estado</td>
+                    <td>${char1.status}</td>
+                    <td>${char2.status}</td>
+                </tr>
+                <tr>
+                    <td>Raza</td>
+                    <td>${char1.race}</td>
+                    <td>${char2.race}</td>
+                </tr>
+                <tr>
+                    <td>Género</td>
+                    <td>${char1.gender}</td>
+                    <td>${char2.gender}</td>
+                </tr>
+                <tr>
+                    <td>Altura</td>
+                    <td>${char1.height}</td>
+                    <td>${char2.height}</td>
+                </tr>
+                <tr>
+                    <td>Peso</td>
+                    <td>${char1.weight}</td>
+                    <td>${char2.weight}</td>
+                </tr>
+            </tbody>
+        </table>
+    `;
+}
+
+// Eventos
+document.getElementById("compare-btn").addEventListener("click", compareCharacters);
+document.addEventListener("DOMContentLoaded", loadCharacterOptions);
+
+
 // Fetch and display character details on page load
 async function fetchCharacterDetails() {
     const characterName = getQueryParam("id");

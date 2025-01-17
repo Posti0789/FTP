@@ -341,3 +341,37 @@ footer a:hover {
   padding: 2px;
   border-radius: 3px;
 }
+#comparator {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+#comparator h2 {
+  text-align: center;
+}
+
+#comparator select {
+  margin: 10px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+#comparison-result table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#comparison-result th, #comparison-result td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#comparison-result th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
