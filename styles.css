@@ -255,18 +255,19 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
-/* Pie de página */
 footer {
   text-align: center;
-  margin-top: 40px;
   font-size: 0.9rem;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 10px 0;
   border-radius: 10px;
   animation: fadeIn 2s ease-in-out;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  margin-top: 20px; /* Espacio antes del footer */
 }
+
+
 
 footer a {
   color: #ffcc00;
@@ -437,4 +438,27 @@ footer a:hover {
   color: #fff;
   font-weight: bold;
   border: 1px solid #44aa44;
+}
+/* Botón en la esquina superior derecha */
+.back-to-home {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #1f1f1f; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  border: 2px solid #a7a7a7; /* Borde gris */
+}
+
+.back-to-home:hover {
+  background-color: #a7a7a7; /* Fondo gris al pasar el ratón */
+  color: #1f1f1f; /* Texto oscuro */
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño */
 }
